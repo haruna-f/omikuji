@@ -1,0 +1,14 @@
+.p-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: $space-sm $space-md;
+    align-items: baseline;
+    &__logo {
+        width: 2.5em;
+        height: 2.5em;
+        & img {
+            width: 100%;
+        }
+    }
+}

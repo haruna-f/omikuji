@@ -1,0 +1,11 @@
+.l-main {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    padding: $space-lg 0;
+    &.is-hide {
+        pointer-events: none;
+    }
+}
