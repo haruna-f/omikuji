@@ -1,11 +1,12 @@
 import { setResult } from "./set-result.mjs";
 
-const omikujiImg = document.querySelector('.js-omikujiImg'); 
-const overlay = document.querySelector('.js-overlay');
-
 export function playOmikuji() {
-    omikujiImg.src = '/images/omikuji.gif';
+    document.querySelector('.js-omikujiImg').src = '/images/omikuji.gif';
     setResult();
+
+    setTimeout(() => {
+        document.querySelector('.js-overlay').classList.add('is-show');
+    }, 7000);
 }
 
 // overlay.classList.add('is-show');
