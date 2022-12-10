@@ -1,0 +1,36 @@
+// -- 色 --
+$black: #2d2d2d;
+$white: #FFFFFF;
+$red: #e04c3e;
+$blue: #3e6ce0;
+$green: #434D41;
+
+// -- 余白 --
+$space-sm: 1.6rem; /* 16px */
+$space-md: 2.4rem; /* 24px */
+$space-lg: 3.2rem; /* 32px */
+$space-xl: 10rem; /* 80px */
+
+// -- 基本設定 --
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: "Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN", "Yu Gothic", "游ゴシック", sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.03em;
+    color: $black;
+}
+small {
+    font-size: 0.8em;
+}
+a:hover {
+    opacity: 0.8;
+}
+a:focus:not(:fous-visible), button:focus:not(:fous-visible) {
+    outline: unset;
+}
+a:focus-visible, button:focus-visible {
+    outline: 2px dashed rgba($color: $blue, $alpha: 0.8);
+    border-radius: 4px;
+}

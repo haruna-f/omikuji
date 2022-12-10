@@ -1,0 +1,19 @@
+{
+  "icons": [
+    {
+      "src": "auto/icon_512x512.3db0a3329a3ad0869b09c226556a14fb.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "auto/icon_192x192.12747f974a86299501e17a4265e4bb48.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "",
+  "short_name": "App",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "."
+}

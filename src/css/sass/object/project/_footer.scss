@@ -1,0 +1,22 @@
+.p-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: $space-sm $space-md;
+    align-items: baseline;
+    &__link {
+        display: flex;
+        gap: 0.3em;
+        // width: auto;
+        height: 1em;
+        font-size: 2em;
+        line-height: 1;
+        text-align: right;
+        & * {
+            display: inline-block;
+            width: auto;
+            height: 1em;
+            color: $green;
+        }
+    }
+}
