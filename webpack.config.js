@@ -47,7 +47,7 @@ module.exports = {
       scriptLoading: 'defer',
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'style.min.css',
     }),
     new RemoveEmptyScriptsPlugin(),
     new CopyWebpackPlugin({
