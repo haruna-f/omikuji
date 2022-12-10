@@ -89,6 +89,7 @@ a:focus-visible, button:focus-visible {
   border: 2px solid #2d2d2d;
   border-radius: 4px;
   background: #FFFFFF;
+  -webkit-appearance: none;
 }
 .c-button__inner::before {
   content: "";
