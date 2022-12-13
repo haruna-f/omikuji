@@ -1,5 +1,4 @@
 name: Deploy
-
 on:
   push:
     branches:
@@ -7,15 +6,18 @@ on:
 
 jobs:
   deploy:
+    name: Deploy to server
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
 
       - name: Deploy files
-        uses: SamKirkland/FTP-Deploy-Action@3.0.0
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          ftp-server: ${{ secrets.FTP_HOST }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
