@@ -1,5 +1,3 @@
-RewriteEngine on
-
 RewriteCond %{HTTPS} on
 RewriteCond %{HTTP_HOST} ^www\.omikuji\.harunafujii\.me
 RewriteCond %{REQUEST_URI} ^.*/index.(html|php)
