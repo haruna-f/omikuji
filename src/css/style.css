@@ -10,6 +10,7 @@ html {
 body {
   font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Yu Gothic", "游ゴシック", sans-serif;
   font-size: 1.8rem;
+  line-height: 1.5;
   letter-spacing: 0.03em;
   color: #2d2d2d;
 }
@@ -189,6 +190,7 @@ a:focus-visible, button:focus-visible {
   margin: 0 2.4rem;
   font-family: "Zen Antique", serif;
   font-size: 1.5em;
+  line-height: 1.75;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   opacity: 0;

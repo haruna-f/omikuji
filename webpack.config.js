@@ -76,6 +76,10 @@ module.exports = {
           from: path.resolve(__dirname, 'src/apple-touch-icon.png'),
           to: path.resolve(__dirname, 'dist/'),
         },
+        {
+          from: path.resolve(__dirname, 'src/.htaccess'),
+          to: path.resolve(__dirname, 'dist/'),
+        },
       ],
     }),
     new WebpackPwaManifestPlugin({
