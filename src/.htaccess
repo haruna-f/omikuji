@@ -1,7 +1,11 @@
-RewriteCond %{HTTPS} on
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^www\.omikuji\.harunafujii\.me
 RewriteCond %{REQUEST_URI} ^.*/index.(html|php)
 RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !\.[^/\.]+$
 
 RewriteRule ^(.*)$ https://omikuji.harunafujii.me/$1 [R=301,L]
+</IfModule>
