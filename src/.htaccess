@@ -1,7 +1,26 @@
+<!-- 301リダイレクト -->
 RewriteEngine On
+<!-- http → https -->
 RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} ^www\.omikuji\.harunafujii\.me
+RewriteRule ^(.*)$ https://omikuji.harunafujii.me/$1 [R=301,L]
+<!-- wwwあり → なし -->
+RewriteCond %{HTTP_HOST} ^www\.omikuji\.harunafujii\.me$
+RewriteRule ^(.*)$https://omikuji.harunafujii.me
+<!-- indexファイル名あり → なし -->
 RewriteCond %{REQUEST_URI} ^.*/index.(html|php)
+RewriteRule %^(.*)index.(html|php)$ https://omikuji.harunafujii.me/$1 [R=301,L]
+<!-- 末尾スラッシュなし → あり -->
 RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !\.[^/\.]+$
-RewriteRule ^(.*)$ https://omikuji.harunafujii.me/$1 [R=301,L]
+RewriteRule .* %{REQUEST_URI}/ [R=301,L]
+
+<!-- ブラウザキャッシュ -->
+<ifModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/png "access plus 7 days"
+    ExpiresByType image/gif "access plus 7 days"
+    ExpiresByType image/svg "access plus 7 days"
+    ExpiresByType text/html "access plus 7 days"
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType text/javascript "access plus 7 days"
+</ifModule>
