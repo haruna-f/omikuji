@@ -5,7 +5,7 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://omikuji.harunafujii.me/$1 [R=301,L]
 <!-- wwwあり → なし -->
 RewriteCond %{HTTP_HOST} ^www\.omikuji\.harunafujii\.me$
-RewriteRule ^(.*)$https://omikuji.harunafujii.me
+RewriteRule ^(.*)$ https://omikuji.harunafujii.me/$1 [R=301,L]
 <!-- indexファイル名あり → なし -->
 RewriteCond %{REQUEST_URI} ^.*/index.(html|php)
 RewriteRule %^(.*)index.(html|php)$ https://omikuji.harunafujii.me/$1 [R=301,L]
