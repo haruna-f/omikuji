@@ -1,0 +1,5 @@
+@mixin mq($breakpoints_key) {
+    @media screen and (#{map-get($breakpoints, $breakpoints_key)}) {
+        @content;
+    }
+}
