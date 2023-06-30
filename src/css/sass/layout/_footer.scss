@@ -1,7 +1,14 @@
 .l-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
+    &__copyright, &__links {
+        position: fixed;
+        bottom: 0;
+        z-index: 99;
+        padding: $space-sm;
+    }
+    &__copyright {
+        left: 0;
+    }
+    &__links {
+        right: 0;
+    }
 }

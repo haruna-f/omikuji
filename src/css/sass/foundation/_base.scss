@@ -1,3 +1,15 @@
+// -- メディアクエリ --
+$breakpoints: (
+    sp: 'max-width: 768px',
+    pc: 'min-width: 769px',
+);
+
+@mixin mq($breakpoints_key) {
+    @media screen and (#{map-get($breakpoints, $breakpoints_key)}) {
+        @content;
+    }
+}
+
 // -- 色 --
 $black: #2d2d2d;
 $white: #FFFFFF;
@@ -9,7 +21,8 @@ $green: #434D41;
 $space-sm: 1.6rem; /* 16px */
 $space-md: 2.4rem; /* 24px */
 $space-lg: 3.2rem; /* 32px */
-$space-xl: 10rem; /* 80px */
+$space-xl: 5.6rem; /* 56px */
+$space-xxl: 10rem; /* 80px */
 
 // -- 基本設定 --
 html {
@@ -25,13 +38,7 @@ body {
 small {
     font-size: 0.8em;
 }
-a:hover {
-    opacity: 0.8;
+a {
+    text-decoration: none;
 }
-a:focus:not(:fous-visible), button:focus:not(:fous-visible) {
-    outline: unset;
-}
-a:focus-visible, button:focus-visible {
-    outline: 2px dashed rgba($color: $blue, $alpha: 0.8);
-    border-radius: 4px;
-}
+

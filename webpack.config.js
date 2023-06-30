@@ -24,11 +24,16 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|sass|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'sass-loader',
         ],
+      },
+      {
+        test: /\.(png|gif|)$/,
+        type: 'asset/resource'
       },
     ]
   },
@@ -103,8 +108,8 @@ module.exports = {
     static: {
       directory: './dist',
     },
-    // devMiddleware: {
-    //   writeToDisk: true,
-    // },
+    devMiddleware: {
+      writeToDisk: true,
+    },
   },
 }

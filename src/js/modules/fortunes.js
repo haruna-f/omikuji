@@ -1,1 +1,1 @@
-export const fortunes = ['大吉', '吉', '中吉', '小吉', '末吉'];
+export const fortunes = ['大吉', '中吉', '吉', '末吉', '小吉'];

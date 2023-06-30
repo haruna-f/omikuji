@@ -1,64 +1,113 @@
-class Omikuji {
-    constructor(array) {
-        this.array = array
-    }
+import { proverbs } from "./proverbs";
+import { fortunes } from "./fortunes";
 
-    result() {
-        // おみくじの結果を作成
-        let num = Math.floor(Math.random() * this.array.length);
-        let result = this.array[num];
+const omikuji = () => {
+    const omikuji = document.getElementById('js-omikuji');
+    const buttons = document.querySelectorAll('.js-button');
 
-        return result;
-    }
+    const setResult = (bool) => {
 
-}
+        if (bool == 'true') {
+            const homeAanime = document.querySelector('#js-homeAnime > img');
+            const playAnimePath = "/images/play.gif";
+            const ANIME_DURATION = 6000;
+            const fortuneRandomNum = Math.floor(Math.random() * fortunes.length);
+            const proverbRandomNum = Math.floor(Math.random() * proverbs.length);
+            let fortune = '';
+            const fortuneStrs = fortunes[fortuneRandomNum].split('');
+            const proverb = proverbs[proverbRandomNum];
+            const proverbHeading = proverb.heading;
+            const proverbText = proverb.text;
+            const proverbImage = proverb.image;
 
-class Fortune extends Omikuji {
-    constructor(array) {
-        super(array);
-        this.fortuneElem = document.getElementById('js-fortune');
-    }
+            homeAanime.src = playAnimePath;
+            fortuneStrs.forEach((str) => {
+                fortune += `<span class="js-fortuneStr">${str}</span>`;
+            });
+            omikuji.appendChild(document.createElement('h1')).innerHTML = fortune;
+            omikuji.appendChild(document.createElement('h2')).innerHTML = proverbHeading;
+            omikuji.appendChild(document.createElement('p')).innerHTML = proverbText;
+            omikuji.appendChild(document.createElement('img')).src = `/images/proverbs/${proverbImage}`;
 
-    resultHTML() {        
-        // 運勢を1文字ずつspanで囲む
-        let result = super.result();
-        let resultHTML = '';
-
-        for ( let i = 0; i < result.length; i++ ) {
-            let string = result.charAt(i);
-
-            resultHTML += `<span>${string}</span>`;
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, ANIME_DURATION);
+            });
+        } else {
+            omikuji.classList.remove('is-show');
+            while (omikuji.firstChild) {
+                omikuji.removeChild(omikuji.firstChild);
+            };
         }
-
-        return resultHTML;
     }
 
-    set() {
-        // DOMに結果を追記
-        let result = this.resultHTML();
+    const modalState = (bool) => {
+        const modal = document.getElementById('js-modal');
+        const CLASS = 'is-active';
 
-        this.fortuneElem.innerHTML = result;
+        modal.setAttribute('aria-hidden', !bool);
+        buttons.forEach((button) => {
+            button.setAttribute('aria-expanded', bool);
+        });
+
+        if (bool == 'true') {
+            modal.classList.add(CLASS);
+        } else {
+            modal.classList.remove(CLASS);
+        }
+    };
+
+    const homeState = (bool) => {
+        const home = document.getElementById('js-home');
+        const playButton = document.getElementById('js-playButton');
+
+        if (bool == 'true') {
+            home.classList.add('is-fixed');
+            playButton.classList.add('is-active');
+            playButton.textContent = '占い中…';
+        } else {
+            home.classList.remove('is-fixed');
+            playButton.classList.remove('is-active');
+            playButton.textContent = 'おみくじを引く';
+        }
     }
-}
 
-class Kotowaza extends Omikuji {
-    constructor(array)
-    {
-        super(array);
-        this.kotowazaElem = document.getElementById('js-kotowaza');
-        this.commentElem = document.getElementById('js-comment');
-        this.imgElem = document.getElementById('js-kotowazaImg');
-    }
+    const play = (flg) => {
+        return new Promise((resolve) => {
+            homeState(flg);
+            setResult(flg);
+            setTimeout(() => {
+                resolve();
+            }, 6000);
+        })
+    };
+    
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            let type = e.target.getAttribute('data-button');
+            let flg = "";
+            const TIMER = 800;
 
-    set() {
-        // DOMに結果を追記
-        let result = super.result();
+            if (type == 'play') {
+                flg = 'true';
 
-        this.kotowazaElem.textContent = result.kotowaza;
-        this.commentElem.innerHTML = result.comment;
-        this.imgElem.src = `./images/kotowaza/kotowaza-${result.imgNum}.png`;
-        this.imgElem.alt = result.kotowaza;
-    }
-}
+                play(flg).then(() => {
+                    modalState(flg);
+                    setTimeout(() => {
+                        omikuji.classList.add('is-show');
+                    }, TIMER);
+                });
+            } else {
+                flg = 'false';
 
-export { Fortune, Kotowaza };
+                homeState(flg);
+                modalState(flg);
+                setTimeout(() => {
+                    setResult(flg)
+                }, TIMER + 200);
+            }
+        });
+    });
+};
+export default omikuji;
