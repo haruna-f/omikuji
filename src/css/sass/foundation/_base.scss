@@ -41,6 +41,6 @@ small {
 a {
     text-decoration: none;
 }
-button {
+button, [type=button] {
     -webkit-appearance: none;
 }
