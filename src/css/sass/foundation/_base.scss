@@ -44,3 +44,8 @@ a {
 button, [type=button] {
     -webkit-appearance: none;
 }
+button, a {
+    &:focus-visible {
+        outline: 1.5px dashed $blue;
+    }
+}
